@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+
+# Spark
+spark-warehouse/
+metastore_db/
+*.log
+
+# Generated output
+output/
+data/output/
+
+# OS
+.DS_Store
+Thumbs.db
