@@ -9,7 +9,7 @@ The assessment states that CSVs are appended daily, that each turbine always bel
 
 ## Configuration
 
-There is deliberately **no YAML configuration file**. Input/output locations and processing options are supplied through Python `argparse` CLI arguments.
+Input/output locations and processing options are supplied through Python `argparse` CLI arguments.
 
 Example:
 
