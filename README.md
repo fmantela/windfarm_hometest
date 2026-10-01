@@ -42,7 +42,7 @@ data_group_2.csv
 data_group_3.csv
 ```
 
-The supplied PoC data currently includes groups 2 and 3. The wildcard means group 1 and future group files are picked up without code changes.
+The supplied PoC data currently includes groups 1,2 and 3. The wildcard means any future group files are picked up without code changes.
 
 Expected columns:
 
@@ -52,7 +52,7 @@ timestamp,turbine_id,wind_speed,wind_direction,power_output
 
 ## Processing
 
-1. Read all matching CSVs with an explicit Spark schema.
+1. Read all matching CSVs and enforcing Spark schema.
 2. Parse timestamps and reject records without a valid timestamp/turbine ID.
 3. Normalise invalid physical values to null:
    - wind speed < 0
@@ -107,7 +107,3 @@ pytest -q
 - IQR is used as a practical PoC rule for identifying power outliers; the multiplier is configurable.
 - Missing sensor values are imputed rather than dropping otherwise useful turbine observations.
 - The sample is hourly, but the implementation does not hard-code an hourly frequency.
-
-## Productionisation discussion
-
-For production, the same processing functions could run as a scheduled Spark job against object storage. Delta would provide transactional writes and support incremental processing. A production implementation would additionally add data-quality metrics, structured logging, monitoring/alerting, schema evolution controls, partitioning strategy, idempotent/incremental processing, and orchestration.
